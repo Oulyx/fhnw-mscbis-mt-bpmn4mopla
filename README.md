@@ -1,6 +1,6 @@
 # fhnw-mscbis-mt-bpmn4mopla
 
-With my Supervisor Emanuele Laurenzi and Alta Van der Merwe the following Paper resulted out of the Thesis: https://www.researchgate.net/publication/359152597_BPMN4MoPla_Mobility_Planning_Based_on_Business_Decision-Making
+With my Supervisor Dr. Emanuele Laurenzi and Prof. Dr. Alta Van der Merwe the following Paper resulted out of the Thesis: https://www.researchgate.net/publication/359152597_BPMN4MoPla_Mobility_Planning_Based_on_Business_Decision-Making
 
 A downloadable ZIP of the Tool can be found here: https://kdrive.infomaniak.com/app/share/474717/25c96d64-4e84-4e73-9fa7-5aa7185bdcb5/files/12
 
