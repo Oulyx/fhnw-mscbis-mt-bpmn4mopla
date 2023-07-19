@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1wa9sth" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
+  <bpmn:process id="travelBotTrainToAirport" name="travelBotTrainToAirport" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0aqj839</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="task_jumpGapBicycle1" name="Jump Gap 1 Train">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/jumpGap?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({});</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0b8446b</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_165a84t</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="tasj_jumpGap2" name="Jump Gap 2 Train">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/jumpGap?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({});</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0rszugz</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1r6bos6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="task_BlueLEDOn" name="Blue LED on">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/internalled/turnonled?blue=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0aqj839</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0b8446b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0h3nbwo" name="Follow Line 1 Train">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/moveStraight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_165a84t</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0rszugz</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="task_BlueLedOff" name="Blue LED Off">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/internalled/turnoffled</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1r6bos6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ydo6wv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_0hoxicx">
+      <bpmn:incoming>SequenceFlow_0ydo6wv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0aqj839" sourceRef="StartEvent_1" targetRef="task_BlueLEDOn" />
+    <bpmn:sequenceFlow id="SequenceFlow_0b8446b" sourceRef="task_BlueLEDOn" targetRef="task_jumpGapBicycle1" />
+    <bpmn:sequenceFlow id="SequenceFlow_165a84t" sourceRef="task_jumpGapBicycle1" targetRef="ServiceTask_0h3nbwo" />
+    <bpmn:sequenceFlow id="SequenceFlow_0rszugz" sourceRef="ServiceTask_0h3nbwo" targetRef="tasj_jumpGap2" />
+    <bpmn:sequenceFlow id="SequenceFlow_1r6bos6" sourceRef="tasj_jumpGap2" targetRef="task_BlueLedOff" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ydo6wv" sourceRef="task_BlueLedOff" targetRef="EndEvent_0hoxicx" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="travelBotTrainToAirport">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="192" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1da2gj7_di" bpmnElement="task_jumpGapBicycle1">
+        <dc:Bounds x="160" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_11eidmo_di" bpmnElement="tasj_jumpGap2">
+        <dc:Bounds x="160" y="460" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0v03dtq_di" bpmnElement="task_BlueLEDOn">
+        <dc:Bounds x="160" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0h3nbwo_di" bpmnElement="ServiceTask_0h3nbwo">
+        <dc:Bounds x="160" y="350" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1xr8pr1_di" bpmnElement="task_BlueLedOff">
+        <dc:Bounds x="160" y="570" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0hoxicx_di" bpmnElement="EndEvent_0hoxicx">
+        <dc:Bounds x="192" y="682" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0aqj839_di" bpmnElement="SequenceFlow_0aqj839">
+        <di:waypoint x="210" y="118" />
+        <di:waypoint x="210" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0b8446b_di" bpmnElement="SequenceFlow_0b8446b">
+        <di:waypoint x="210" y="220" />
+        <di:waypoint x="210" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_165a84t_di" bpmnElement="SequenceFlow_165a84t">
+        <di:waypoint x="210" y="320" />
+        <di:waypoint x="210" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0rszugz_di" bpmnElement="SequenceFlow_0rszugz">
+        <di:waypoint x="210" y="430" />
+        <di:waypoint x="210" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1r6bos6_di" bpmnElement="SequenceFlow_1r6bos6">
+        <di:waypoint x="210" y="540" />
+        <di:waypoint x="210" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ydo6wv_di" bpmnElement="SequenceFlow_0ydo6wv">
+        <di:waypoint x="210" y="650" />
+        <di:waypoint x="210" y="682" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

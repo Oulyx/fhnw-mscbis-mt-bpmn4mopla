@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_054lb61" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
+  <bpmn:process id="TravelBot_subProcessPedestrian" name="TravelBot_subProcessPedestrian" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_travelBotPedestrian" name="Start walking to trainstation">
+      <bpmn:outgoing>Flow_1pp3ele</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="RedLEDOn" name="Red LED on">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/internalled/turnonled?red=100&amp;green=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pp3ele</bpmn:incoming>
+      <bpmn:outgoing>Flow_173vg6n</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1v8fj4w" name="Turn Right 1 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/turnRight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0efsudv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1u5q0kl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0xnc8wp" name="Follow Line 1 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/moveStraight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1r19t9v</bpmn:incoming>
+      <bpmn:outgoing>Flow_0efsudv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_turnLeft1Pedestrian" name="Turn Left 1 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/turnLeft?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="javascript">out=JSON.stringify({"do"})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_173vg6n</bpmn:incoming>
+      <bpmn:outgoing>Flow_1r19t9v</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0a81p48" name="Follow Line 2 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/moveStraight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1u5q0kl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tn3gg5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_14a8c3c" name="Turn Left 2 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/turnLeft?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tn3gg5</bpmn:incoming>
+      <bpmn:outgoing>Flow_016sssp</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_08eyt3k" name="Follow Line 3 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/moveStraight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_016sssp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0s6mjtq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_002w0fc" name="Turn Left 3 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/turnLeft?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0s6mjtq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rywuih</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0lyr9hj" name="Follow Line 4 Pedestrian">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/linefollowing_operation/moveStraight?speed=100</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1rywuih</bpmn:incoming>
+      <bpmn:outgoing>Flow_01qnmz8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_173vg6n" sourceRef="RedLEDOn" targetRef="Activity_turnLeft1Pedestrian" />
+    <bpmn:sequenceFlow id="Flow_1r19t9v" sourceRef="Activity_turnLeft1Pedestrian" targetRef="Activity_0xnc8wp" />
+    <bpmn:sequenceFlow id="Flow_0efsudv" sourceRef="Activity_0xnc8wp" targetRef="Activity_1v8fj4w" />
+    <bpmn:sequenceFlow id="Flow_1u5q0kl" sourceRef="Activity_1v8fj4w" targetRef="Activity_0a81p48" />
+    <bpmn:sequenceFlow id="Flow_0tn3gg5" sourceRef="Activity_0a81p48" targetRef="Activity_14a8c3c" />
+    <bpmn:sequenceFlow id="Flow_016sssp" sourceRef="Activity_14a8c3c" targetRef="Activity_08eyt3k" />
+    <bpmn:sequenceFlow id="Flow_0s6mjtq" sourceRef="Activity_08eyt3k" targetRef="Activity_002w0fc" />
+    <bpmn:sequenceFlow id="Flow_1rywuih" sourceRef="Activity_002w0fc" targetRef="Activity_0lyr9hj" />
+    <bpmn:endEvent id="Event_1wu3p8c" name="Arrived at trainstation">
+      <bpmn:incoming>SequenceFlow_117sbs3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_01qnmz8" sourceRef="Activity_0lyr9hj" targetRef="REDLEDOFF" />
+    <bpmn:sequenceFlow id="Flow_1pp3ele" sourceRef="StartEvent_travelBotPedestrian" targetRef="RedLEDOn" />
+    <bpmn:serviceTask id="REDLEDOFF" name="Red LED Off">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://10.0.6.59:8080/mBot/api/internalled/turnoffled</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript">out=JSON.stringify({})</camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_01qnmz8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_117sbs3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_117sbs3" sourceRef="REDLEDOFF" targetRef="Event_1wu3p8c" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelBot_subProcessPedestrian">
+      <bpmndi:BPMNEdge id="Flow_173vg6n_di" bpmnElement="Flow_173vg6n">
+        <di:waypoint x="210" y="260" />
+        <di:waypoint x="210" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1r19t9v_di" bpmnElement="Flow_1r19t9v">
+        <di:waypoint x="260" y="330" />
+        <di:waypoint x="290" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0efsudv_di" bpmnElement="Flow_0efsudv">
+        <di:waypoint x="390" y="330" />
+        <di:waypoint x="410" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u5q0kl_di" bpmnElement="Flow_1u5q0kl">
+        <di:waypoint x="460" y="370" />
+        <di:waypoint x="460" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tn3gg5_di" bpmnElement="Flow_0tn3gg5">
+        <di:waypoint x="460" y="480" />
+        <di:waypoint x="460" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_016sssp_di" bpmnElement="Flow_016sssp">
+        <di:waypoint x="410" y="550" />
+        <di:waypoint x="390" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s6mjtq_di" bpmnElement="Flow_0s6mjtq">
+        <di:waypoint x="290" y="550" />
+        <di:waypoint x="260" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rywuih_di" bpmnElement="Flow_1rywuih">
+        <di:waypoint x="210" y="590" />
+        <di:waypoint x="210" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01qnmz8_di" bpmnElement="Flow_01qnmz8">
+        <di:waypoint x="210" y="700" />
+        <di:waypoint x="210" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pp3ele_di" bpmnElement="Flow_1pp3ele">
+        <di:waypoint x="210" y="152" />
+        <di:waypoint x="210" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_04y49vy_di" bpmnElement="RedLEDOn">
+        <dc:Bounds x="160" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1fibfg1_di" bpmnElement="Activity_turnLeft1Pedestrian">
+        <dc:Bounds x="160" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xnc8wp_di" bpmnElement="Activity_0xnc8wp">
+        <dc:Bounds x="290" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v8fj4w_di" bpmnElement="Activity_1v8fj4w">
+        <dc:Bounds x="410" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14a8c3c_di" bpmnElement="Activity_14a8c3c">
+        <dc:Bounds x="410" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0a81p48_di" bpmnElement="Activity_0a81p48">
+        <dc:Bounds x="410" y="400" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08eyt3k_di" bpmnElement="Activity_08eyt3k">
+        <dc:Bounds x="290" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_002w0fc_di" bpmnElement="Activity_002w0fc">
+        <dc:Bounds x="160" y="510" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lyr9hj_di" bpmnElement="Activity_0lyr9hj">
+        <dc:Bounds x="160" y="620" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1wu3p8c_di" bpmnElement="Event_1wu3p8c">
+        <dc:Bounds x="192" y="842" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="184" y="885" width="54" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_travelBotPedestrian">
+        <dc:Bounds x="192" y="116" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="172" y="79" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_17yom04_di" bpmnElement="REDLEDOFF">
+        <dc:Bounds x="160" y="730" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_117sbs3_di" bpmnElement="SequenceFlow_117sbs3">
+        <di:waypoint x="210" y="810" />
+        <di:waypoint x="210" y="842" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
